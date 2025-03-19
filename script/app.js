@@ -1,33 +1,45 @@
-let amigos = []; // Array que armazenará os nomes
+//O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
+let amigos = []; 
 
 function adicionarAmigo() {
-    let input = document.getElementById("amigo"); // Captura o campo de entrada
-    let nome = input.value.trim(); // Remove espaços extras
+    let input = document.getElementById("amigo"); 
+    let nome = input.value.trim(); 
 
-    if (nome === "") { // Se o campo estiver vazio, exibe alerta
+    if (nome === "") {
         alert("Por favor, insira um nome.");
         return;
     }
 
-    if (amigos.includes(nome)) { // Evita nomes repetidos
+    if (amigos.includes(nome)) { 
         alert("Este nome já foi adicionado!");
         return;
     }
 
-    amigos.push(nome); // Adiciona ao array
+    amigos.push(nome); 
 
-    atualizarLista(); // Atualiza a exibição da lista
+    atualizarLista(); 
 
-    input.value = ""; // Limpa o campo de entrada
+    input.value = ""; 
 }
 
 function atualizarLista() {
-    let lista = document.getElementById("listaAmigos"); // Captura a lista
-    lista.innerHTML = ""; // Limpa a lista antes de atualizar
+    let lista = document.getElementById("listaAmigos");
+    lista.innerHTML = ""; 
 
     amigos.forEach((nome) => {
-        let item = document.createElement("li"); // Cria um item de lista <li>
+        let item = document.createElement("li"); 
         item.textContent = nome;
-        lista.appendChild(item); // Adiciona o item à lista
+        lista.appendChild(item); 
     });
+}
+function sortearAmigo() {
+    if (amigos.length === 0) { 
+        alert("A lista de amigos está vazia! Adicione pelo menos um nome antes de sortear.");
+        return;
+    }
+
+    let indiceSorteado = Math.floor(Math.random() * amigos.length); 
+    let amigoSorteado = amigos[indiceSorteado]; 
+
+    document.getElementById("resultado").innerHTML = `<li>🎉 O amigo sorteado foi: <strong>${amigoSorteado}</strong> 🎉</li>`; 
 }
